@@ -1,0 +1,203 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* GFI Brand Colors - Industrial Metallic Theme */
+    --background: 0 0% 100%;
+    --foreground: 210 60% 12%;
+    
+    /* Primary - Deep Industrial Blue */
+    --primary: 210 60% 12%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Secondary - Vibrant Red for CTAs */
+    --secondary: 0 70% 50%;
+    --secondary-foreground: 0 0% 100%;
+    
+    /* Accent - Steel Gray */
+    --accent: 210 10% 85%;
+    --accent-foreground: 210 60% 12%;
+    
+    /* Muted - Light Industrial Gray */
+    --muted: 210 10% 95%;
+    --muted-foreground: 210 15% 45%;
+    
+    /* Card */
+    --card: 0 0% 100%;
+    --card-foreground: 210 60% 12%;
+    
+    /* Popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 60% 12%;
+    
+    /* Destructive */
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Border & Input */
+    --border: 210 15% 88%;
+    --input: 210 15% 88%;
+    --ring: 210 60% 12%;
+    
+    /* Radius */
+    --radius: 0.5rem;
+    
+    /* Custom GFI Design Tokens */
+    --metallic-gradient: linear-gradient(135deg, hsl(210, 10%, 92%) 0%, hsl(210, 10%, 98%) 100%);
+    --hero-gradient: linear-gradient(135deg, hsl(210, 60%, 12%) 0%, hsl(210, 55%, 18%) 100%);
+    --cta-gradient: linear-gradient(135deg, hsl(0, 70%, 50%) 0%, hsl(0, 65%, 45%) 100%);
+    
+    /* Shadows */
+    --shadow-elegant: 0 10px 40px -10px hsl(210 60% 12% / 0.15);
+    --shadow-card: 0 4px 20px -4px hsl(210 60% 12% / 0.1);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    --background: 210 60% 8%;
+    --foreground: 0 0% 98%;
+    
+    --primary: 0 0% 98%;
+    --primary-foreground: 210 60% 12%;
+    
+    --secondary: 0 70% 55%;
+    --secondary-foreground: 0 0% 100%;
+    
+    --accent: 210 20% 20%;
+    --accent-foreground: 0 0% 98%;
+    
+    --muted: 210 20% 15%;
+    --muted-foreground: 210 10% 65%;
+    
+    --card: 210 20% 12%;
+    --card-foreground: 0 0% 98%;
+    
+    --popover: 210 20% 12%;
+    --popover-foreground: 0 0% 98%;
+    
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 210 20% 20%;
+    --input: 210 20% 20%;
+    --ring: 0 0% 98%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/30 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary/50;
+  }
+}
+
+@layer utilities {
+  /* Metallic texture overlay */
+  .metallic-texture {
+    position: relative;
+  }
+  
+  .metallic-texture::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 2px,
+        hsl(210 10% 50% / 0.03) 2px,
+        hsl(210 10% 50% / 0.03) 4px
+      );
+    pointer-events: none;
+  }
+  
+  /* Fade in animations */
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slide-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .animate-fade-up {
+    animation: fade-up 0.6s ease-out forwards;
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 0.4s ease-out forwards;
+  }
+  
+  .animate-slide-in-right {
+    animation: slide-in-right 0.6s ease-out forwards;
+  }
+  
+  /* Delay utilities */
+  .delay-100 {
+    animation-delay: 0.1s;
+  }
+  
+  .delay-200 {
+    animation-delay: 0.2s;
+  }
+  
+  .delay-300 {
+    animation-delay: 0.3s;
+  }
+  
+  .delay-400 {
+    animation-delay: 0.4s;
+  }
+}
