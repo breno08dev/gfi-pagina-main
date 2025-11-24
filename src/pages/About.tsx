@@ -26,17 +26,17 @@ const About = () => {
   ];
 
   const timeline = [
-    { year: "2010", title: "Fundação", description: "Início das operações focado em pequenas estruturas metálicas" },
-    { year: "2014", title: "Expansão", description: "Ampliação da equipe e aquisição de equipamentos de ponta" },
-    { year: "2018", title: "Consolidação", description: "100 projetos entregues e certificação ISO 9001" },
-    { year: "2022", title: "Líder Regional", description: "Referência em estruturas metálicas no estado" },
-    { year: "2024", title: "Hoje", description: "Mais de 500 projetos e equipe de 50 profissionais" },
+    { year: "2020", title: "Fundação", description: "Início das operações focado em pequenas estruturas metálicas" },
+    { year: "2021", title: "Expansão", description: "Ampliação da equipe e aquisição de equipamentos de ponta" },
+    { year: "2022", title: "Consolidação", description: "+50 projetos entregues com qualidade" },
+    { year: "2023", title: "Líder Regional", description: "Referência em estruturas metálicas no estado" },
+    { year: "2025", title: "Hoje", description: "Projetos que transformam escala em resultado" },
   ];
 
   const stats = [
-    { number: "500+", label: "Projetos Entregues" },
+    { number: "100+", label: "Projetos Entregues" },
     { number: "50+", label: "Profissionais" },
-    { number: "14", label: "Anos de Experiência" },
+    { number: "5+", label: "Anos de Experiência" },
     { number: "98%", label: "Clientes Satisfeitos" },
   ];
 
@@ -48,10 +48,10 @@ const About = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl">
             <h1 className="font-heading font-bold text-5xl md:text-6xl mb-6 animate-fade-up">
-              Sobre a GFI Soluções Metálicas
+              Nossa História
             </h1>
             <p className="text-xl leading-relaxed text-primary-foreground/90 animate-fade-up delay-100">
-              Há mais de uma década transformando ideias em estruturas sólidas, com compromisso inabalável com a qualidade e satisfação dos nossos clientes.
+              Há mais de cinco anos transformando ideias em estruturas sólidas, com compromisso inabalável com a qualidade e satisfação dos nossos clientes.
             </p>
           </div>
         </div>
@@ -75,15 +75,16 @@ const About = () => {
               <h2 className="font-heading font-bold text-4xl text-foreground">
                 Nossa História
               </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                Fundada em 2010, a GFI Soluções Metálicas nasceu do sonho de oferecer soluções em estruturas metálicas que combinassem qualidade, precisão e atendimento personalizado.
-              </p>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                Ao longo dos anos, crescemos de uma pequena oficina para uma das principais referências do setor no estado, mantendo sempre nossos valores fundamentais de excelência e compromisso com cada cliente.
-              </p>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                Hoje, com uma equipe de mais de 50 profissionais especializados e equipamentos de última geração, continuamos dedicados a entregar projetos que superam expectativas.
-              </p>
+             <p className="text-lg text-muted-foreground leading-relaxed">
+      Fundada em 2020, a GFI Montagem nasceu com o propósito de entregar estruturas metálicas com qualidade, precisão e total compromisso com cada projeto.
+          </p>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+      Com o passar dos anos, evoluímos de uma pequena oficina para uma referência no setor, impulsionados pela busca constante por inovação e excelência em cada obra realizada.
+          </p>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+      Hoje, seguimos firmes como uma empresa consolidada, unindo tecnologia, experiência e responsabilidade para entregar soluções que elevam o padrão do mercado.
+          </p>
+
             </div>
           </div>
         </div>

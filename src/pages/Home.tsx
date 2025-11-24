@@ -3,9 +3,9 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Building2, Hammer, Box, Warehouse, Wrench, Shield, Users, Award, ChevronRight } from "lucide-react";
 import ServiceCard from "@/components/ServiceCard";
 import heroImage from "@/assets/hero-industrial.jpg";
-import galpaoImage from "@/assets/galpao-metalico.jpg";
-import mezaninoImage from "@/assets/mezanino.jpg";
-import coberturaImage from "@/assets/cobertura-metalica.jpg";
+import galpaoImage from "@/assets/atacadao.jpg";
+import mezaninoImage from "@/assets/estrutura6.jpg";
+import coberturaImage from "@/assets/estrutura3.jpg";
 
 const Home = () => {
   const services = [
@@ -56,7 +56,7 @@ const Home = () => {
 
   const projects = [
     { image: galpaoImage, title: "Galpão Industrial 2000m²" },
-    { image: mezaninoImage, title: "Mezanino Comercial" },
+    { image: mezaninoImage, title: "Estrutura Metálica" },
     { image: coberturaImage, title: "Cobertura Metálica" },
   ];
 

@@ -2,9 +2,10 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Building2, Hammer, Box, Warehouse, Wrench, ArrowRight, Check } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import galpaoImage from "@/assets/galpao-metalico.jpg";
-import mezaninoImage from "@/assets/mezanino.jpg";
-import coberturaImage from "@/assets/cobertura-metalica.jpg";
+import galpaoImage from "@/assets/estrutura6.jpg";
+import mezaninoImage from "@/assets/estrutura3.jpg";
+import coberturaImage from "@/assets/estrutura4.jpg";
+import obraEspecial from "@/assets/atacadao.jpg"
 
 const Services = () => {
   const services = [
@@ -36,15 +37,15 @@ const Services = () => {
     },
     {
       icon: Box,
-      title: "Mezaninos",
-      description: "Soluções inteligentes para aproveitamento de espaço vertical em ambientes industriais e comerciais.",
+      title: "Estruturas Metálicas de Grande Porte",
+      description: "Soluções robustas para galpões, coberturas e projetos industriais de alta performance.",
       image: mezaninoImage,
       features: [
-        "Projeto personalizado",
-        "Estrutura modular",
-        "Fácil montagem e desmontagem",
-        "Alta capacidade de carga",
-        "Acabamento de qualidade",
+        "Engenharia precisa em treliças metálicas",
+        "Montagem em altura com total segurança",
+        "Estruturas amplas para vãos extensos",
+        "Alta resistência e durabilidade",
+        "Ideal para obras industriais de grande escala",
       ],
     },
     {
@@ -62,15 +63,15 @@ const Services = () => {
     },
     {
       icon: Wrench,
-      title: "Projetos Especiais",
-      description: "Desenvolvimento de soluções customizadas para necessidades específicas e projetos únicos.",
-      image: mezaninoImage,
+      title: "Galpões Industriais de Grande Escala",
+      description: "Execução completa de estruturas metálicas para obras comerciais e logísticas de alta demanda.",
+      image: obraEspecial,
       features: [
-        "Engenharia personalizada",
-        "Soluções sob medida",
-        "Consultoria especializada",
-        "Acompanhamento técnico",
-        "Suporte pós-entrega",
+        "Estrutura robusta para grandes vãos",
+        "Montagem rápida e segura em campo",
+        "Projetos dimensionados para cargas elevadas",
+        "Alta durabilidade e desempenho estrutural",
+        "Ideal para centros de distribuição e grandes redes varejistas",
       ],
     },
   ];

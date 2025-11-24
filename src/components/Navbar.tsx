@@ -2,10 +2,11 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/logo.png"; // Certifique-se que a imagem existe
 
 const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -29,27 +30,21 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-background/95 backdrop-blur-md shadow-elegant"
-          : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-background border-b border-border/10 ${
+        isScrolled ? "shadow-elegant" : "shadow-sm"
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3 group">
-            <div className="w-12 h-12 bg-secondary rounded-lg flex items-center justify-center font-heading font-bold text-secondary-foreground text-xl transition-transform group-hover:scale-105">
-              GFI
-            </div>
-            <div className="hidden md:block">
-              <div className="font-heading font-bold text-lg text-primary">
-                GFI Soluções Metálicas
-              </div>
-              <div className="text-xs text-muted-foreground">
-                e Construções
-              </div>
-            </div>
+        {/* Aumentei a altura do container para h-28 (112px) para acomodar a logo maior */}
+        <div className="flex items-center justify-between h-28">
+          {/* Logo isolada e maior */}
+          <Link to="/" className="flex items-center group">
+            <img 
+              src={logo} 
+              alt="GFI Soluções Metálicas" 
+              // Aumentei a altura da logo para h-20 (80px)
+              className="h-32 w-auto object-contain transition-transform group-hover:scale-105" 
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -89,7 +84,7 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border animate-fade-in">
+          <div className="md:hidden py-4 border-t border-border animate-fade-in bg-background">
             <div className="flex flex-col space-y-4">
               {navLinks.map((link) => (
                 <Link
