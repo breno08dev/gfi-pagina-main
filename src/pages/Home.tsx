@@ -82,7 +82,7 @@ const Home = () => {
               <span className="text-secondary">Excelência</span>
             </h1>
             <p className="text-xl md:text-2xl text-primary-foreground/90 mb-8 leading-relaxed animate-fade-up delay-100">
-              Especialistas em estruturas metálicas, coberturas, mezaninos e galpões industriais. Transformamos projetos em realidade com qualidade incomparável.
+              Especialistas em estruturas metálicas, coberturas e galpões industriais. Transformamos projetos em realidade com qualidade incomparável.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 animate-fade-up delay-200">
               <Button 

@@ -1,9 +1,20 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import galpaoImage from "@/assets/galpao-metalico.jpg";
-import mezaninoImage from "@/assets/mezanino.jpg";
-import coberturaImage from "@/assets/cobertura-metalica.jpg";
+//Galpão
+import galpaoImage from "@/assets/mercado2.jpg";
+import galpaoImage2 from "@/assets/atacadao.jpg";
+//Caldeiraria
+import caldeiraria from "@/assets/caldeiraria.jpg";
+import caldeiraria3 from "@/assets/caldeiraria3.jpg";
+//Estrutura Metalicas
+import estruturaImage from "@/assets/estrutura3.jpg";
+import estruturaImage2 from "@/assets/estrutura6.jpg";
+//Coberturas 
+import coberturaImage from "@/assets/cobertura.jpg";
+import coberturaImage2 from "@/assets/cobertura2.jpg";
+
+
 
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState("todos");
@@ -13,92 +24,84 @@ const Portfolio = () => {
     { id: "galpoes", label: "Galpões" },
     { id: "estruturas", label: "Estruturas" },
     { id: "coberturas", label: "Coberturas" },
-    { id: "mezaninos", label: "Mezaninos" },
+    { id: "caldeiraria", label: "Caldeiraria" },
   ];
 
-  const projects = [
-    {
-      id: 1,
-      title: "Galpão Industrial 2000m²",
-      category: "galpoes",
-      location: "São Paulo - SP",
-      year: "2023",
-      image: galpaoImage,
-      description: "Construção completa de galpão industrial com estrutura metálica para armazenamento logístico.",
-    },
-    {
-      id: 2,
-      title: "Mezanino Comercial",
-      category: "mezaninos",
-      location: "Campinas - SP",
-      year: "2023",
-      image: mezaninoImage,
-      description: "Mezanino de 300m² para otimização de espaço em centro comercial.",
-    },
-    {
-      id: 3,
-      title: "Cobertura Metálica Residencial",
-      category: "coberturas",
-      location: "Santos - SP",
-      year: "2024",
-      image: coberturaImage,
-      description: "Sistema de cobertura metálica com isolamento térmico para área de lazer.",
-    },
-    {
-      id: 4,
-      title: "Estrutura Industrial Complexa",
-      category: "estruturas",
-      location: "Guarulhos - SP",
-      year: "2024",
-      image: galpaoImage,
-      description: "Estrutura metálica de alta complexidade para linha de produção industrial.",
-    },
-    {
-      id: 5,
-      title: "Galpão Logístico 3500m²",
-      category: "galpoes",
-      location: "Osasco - SP",
-      year: "2023",
-      image: galpaoImage,
-      description: "Grande estrutura metálica para centro de distribuição com pé-direito elevado.",
-    },
-    {
-      id: 6,
-      title: "Cobertura para Estacionamento",
-      category: "coberturas",
-      location: "São Bernardo - SP",
-      year: "2024",
-      image: coberturaImage,
-      description: "Sistema de cobertura metálica para estacionamento comercial com 50 vagas.",
-    },
-    {
-      id: 7,
-      title: "Mezanino Industrial 500m²",
-      category: "mezaninos",
-      location: "Barueri - SP",
-      year: "2024",
-      image: mezaninoImage,
-      description: "Mezanino modular para expansão de área de estoque em indústria.",
-    },
-    {
-      id: 8,
-      title: "Estrutura para Torre de Resfriamento",
-      category: "estruturas",
-      location: "Jundiaí - SP",
-      year: "2023",
-      image: galpaoImage,
-      description: "Estrutura metálica especial para suporte de equipamentos industriais pesados.",
-    },
-    {
-      id: 9,
-      title: "Cobertura Metálica Quadra Esportiva",
-      category: "coberturas",
-      location: "Sorocaba - SP",
-      year: "2024",
-      image: coberturaImage,
-      description: "Cobertura metálica de grande vão livre para quadra poliesportiva.",
-    },
-  ];
+ const projects = [
+  {
+    id: 1,
+    title: "Galpão Industrial 2000m²",
+    category: "galpoes",
+    location: "São Paulo - SP",
+    year: "2023",
+    image: galpaoImage,
+    description: "Construção completa de galpão industrial com estrutura metálica para operação logística.",
+  },
+  {
+    id: 2,
+    title: "Unidade de Caldeiraria",
+    category: "caldeiraria",
+    location: "Campinas - SP",
+    year: "2023",
+    image: caldeiraria,
+    description: "Fabricação e montagem de equipamento industrial com acesso estrutural.",
+  },
+  {
+    id: 3,
+    title: "Estrutura Industrial Complexa",
+    category: "estruturas",
+    location: "Guarulhos - SP",
+    year: "2024",
+    image: estruturaImage2,
+    description: "Estrutura metálica robusta para expansão de linha de produção.",
+  },
+  {
+    id: 4,
+    title: "Galpão Logístico 3500m²",
+    category: "galpoes",
+    location: "Osasco - SP",
+    year: "2023",
+    image: galpaoImage2,
+    description: "Galpão metálico de grande porte para centro de distribuição.",
+  },
+  {
+    id: 5,
+    title: "Cobertura para Estacionamento",
+    category: "coberturas",
+    location: "São Bernardo - SP",
+    year: "2024",
+    image: coberturaImage,
+    description: "Cobertura metálica projetada para 50 vagas de estacionamento.",
+  },
+  {
+    id: 6,
+    title: "Complexo Industrial com Estruturas Metálicas",
+    category: "caldeiraria",
+    location: "Barueri - SP",
+    year: "2024",
+    image: caldeiraria3,
+    description: "Conjunto industrial com plataformas, tanques e acessos metálicos.",
+  },
+  {
+    id: 7,
+    title: "Estrutura para Torre de Resfriamento",
+    category: "estruturas",
+    location: "Jundiaí - SP",
+    year: "2023",
+    image: estruturaImage,
+    description: "Estrutura metálica leve com grande vão para suporte de equipamentos.",
+  },
+  {
+    id: 8,
+    title: "Cobertura Metálica Quadra Esportiva",
+    category: "coberturas",
+    location: "Sorocaba - SP",
+    year: "2024",
+    image: coberturaImage2,
+    description: "Cobertura de grande vão livre para quadra poliesportiva.",
+  },
+];
+
 
   const filteredProjects = activeFilter === "todos" 
     ? projects 
@@ -188,10 +191,10 @@ const Portfolio = () => {
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { number: "500+", label: "Projetos Entregues" },
+              { number: "100+", label: "Projetos Entregues" },
               { number: "150k+", label: "m² Construídos" },
               { number: "98%", label: "Clientes Satisfeitos" },
-              { number: "14", label: "Anos de Experiência" },
+              { number: "5+", label: "Anos de Experiência" },
             ].map((stat, index) => (
               <div 
                 key={stat.label}

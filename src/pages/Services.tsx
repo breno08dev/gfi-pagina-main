@@ -1,11 +1,27 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Building2, Hammer, Box, Warehouse, Wrench, ArrowRight, Check } from "lucide-react";
+import { 
+  Building2, 
+  Hammer, 
+  Box, 
+  Warehouse, 
+  Wrench, 
+  ArrowRight, 
+  Check, 
+  HardHat, 
+  ClipboardCheck, 
+  Flame 
+} from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import galpaoImage from "@/assets/estrutura6.jpg";
-import mezaninoImage from "@/assets/estrutura3.jpg";
-import coberturaImage from "@/assets/estrutura4.jpg";
-import obraEspecial from "@/assets/atacadao.jpg"
+import galpaoImage from "@/assetsServices/imageContrução.jpg";
+import galpao from "@/assets/atacadao.jpg"
+import mezaninoImage from "@/assets/mezanino.jpg";
+import coberturaImage from "@/assets/cobertura-metalica.jpg";
+import equipeImage from "@/assets/equipe-industrial.jpg";
+import caldeiraria  from "@/assetsServices/manutençãoCaldeiraria.jpg"
+import montagemCaldeiraria from "@/assetsServices/montandoCaldeiraria.jpg"
+import manutencaoTelhados from "@/assetsServices/ManutençãoTelhados.jpg"
+import inspecaoImage from "@/assetsServices/InspeçãoMetalica.jpg"
 
 const Services = () => {
   const services = [
@@ -37,22 +53,22 @@ const Services = () => {
     },
     {
       icon: Box,
-      title: "Estruturas Metálicas de Grande Porte",
-      description: "Soluções robustas para galpões, coberturas e projetos industriais de alta performance.",
+      title: "Mezaninos",
+      description: "Soluções inteligentes para aproveitamento de espaço vertical em ambientes industriais e comerciais.",
       image: mezaninoImage,
       features: [
-        "Engenharia precisa em treliças metálicas",
-        "Montagem em altura com total segurança",
-        "Estruturas amplas para vãos extensos",
-        "Alta resistência e durabilidade",
-        "Ideal para obras industriais de grande escala",
+        "Projeto personalizado",
+        "Estrutura modular",
+        "Fácil montagem e desmontagem",
+        "Alta capacidade de carga",
+        "Acabamento de qualidade",
       ],
     },
     {
       icon: Warehouse,
       title: "Galpões Industriais",
       description: "Construção completa de galpões industriais com estrutura metálica de alta performance.",
-      image: galpaoImage,
+      image: galpao,
       features: [
         "Projeto arquitetônico completo",
         "Estrutura robusta e durável",
@@ -62,16 +78,55 @@ const Services = () => {
       ],
     },
     {
-      icon: Wrench,
-      title: "Galpões Industriais de Grande Escala",
-      description: "Execução completa de estruturas metálicas para obras comerciais e logísticas de alta demanda.",
-      image: obraEspecial,
+      icon: HardHat,
+      title: "Montagem de Estruturas",
+      description: "Serviço especializado de montagem de estruturas metálicas em geral com rigor técnico e segurança.",
+      image: montagemCaldeiraria,
       features: [
-        "Estrutura robusta para grandes vãos",
-        "Montagem rápida e segura em campo",
-        "Projetos dimensionados para cargas elevadas",
-        "Alta durabilidade e desempenho estrutural",
-        "Ideal para centros de distribuição e grandes redes varejistas",
+        "Equipe altamente qualificada",
+        "Equipamentos de içamento próprios",
+        "Segurança do trabalho rigorosa",
+        "Montagem ágil e precisa",
+        "Supervisão técnica constante",
+      ],
+    },
+    {
+      icon: Wrench,
+      title: "Manutenções de Telhados",
+      description: "Serviços de manutenção preventiva e corretiva para garantir a integridade da sua cobertura.",
+      image: manutencaoTelhados,
+      features: [
+        "Substituição de telhas danificadas",
+        "Impermeabilização e vedação",
+        "Limpeza e desobstrução de calhas",
+        "Reforço estrutural",
+        "Eliminação de goteiras e infiltrações",
+      ],
+    },
+    {
+      icon: ClipboardCheck,
+      title: "Inspeções Técnicas",
+      description: "Avaliação detalhada em estruturas metálicas e caldeiraria para garantir segurança e conformidade.",
+      image: inspecaoImage,
+      features: [
+        "Laudos técnicos estruturais",
+        "Identificação de patologias",
+        "Ensaios não destrutivos",
+        "Verificação de soldas e conexões",
+        "Plano de manutenção recomendado",
+      ],
+    },
+    {
+      icon: Flame,
+      title: "Caldeiraria",
+      description: "Montagem e manutenção especializada em serviços de caldeiraria industrial leve e pesada.",
+      image: caldeiraria,
+      features: [
+        "Fabricação de peças especiais",
+        "Soldas de alta precisão",
+        "Reparos em tanques e tubulações",
+        "Corte e dobra de chapas",
+        "Montagem industrial",
       ],
     },
   ];
@@ -87,7 +142,7 @@ const Services = () => {
               Nossos Serviços
             </h1>
             <p className="text-xl leading-relaxed text-primary-foreground/90 animate-fade-up delay-100">
-              Soluções completas em estruturas metálicas para atender todas as necessidades do seu projeto com qualidade e precisão.
+              Soluções completas em estruturas metálicas, manutenção e montagem para atender todas as necessidades do seu projeto com qualidade e precisão.
             </p>
           </div>
         </div>
@@ -154,8 +209,8 @@ const Services = () => {
             {[
               { number: "01", title: "Consulta Inicial", description: "Entendimento das necessidades e objetivos do projeto" },
               { number: "02", title: "Projeto e Orçamento", description: "Desenvolvimento técnico e proposta comercial detalhada" },
-              { number: "03", title: "Fabricação", description: "Produção com controle de qualidade rigoroso" },
-              { number: "04", title: "Montagem e Entrega", description: "Instalação profissional e acompanhamento técnico" },
+              { number: "03", title: "Fabricação/Execução", description: "Produção e execução com controle de qualidade rigoroso" },
+              { number: "04", title: "Entrega Técnica", description: "Finalização, inspeção e entrega com garantia" },
             ].map((step, index) => (
               <Card 
                 key={step.number}
