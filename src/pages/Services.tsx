@@ -13,8 +13,8 @@ import {
   Flame 
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import galpaoImage from "@/assetsServices/imageContrução.jpg";
-import galpao from "@/assets/atacadao.jpg"
+import estruturaImage from "@/assetsServices/ImageEstrutura2.jpg";
+import imageMercado from "@/assets/ImageMercado.jpg"
 import mezaninoImage from "@/assets/mezanino.jpg";
 import coberturaImage from "@/assets/cobertura-metalica.jpg";
 import equipeImage from "@/assets/equipe-industrial.jpg";
@@ -29,7 +29,7 @@ const Services = () => {
       icon: Building2,
       title: "Estruturas Metálicas",
       description: "Desenvolvimento completo de estruturas metálicas para uso industrial, comercial e residencial.",
-      image: galpaoImage,
+      image: estruturaImage,
       features: [
         "Projetos estruturais completos",
         "Cálculo estrutural detalhado",
@@ -68,7 +68,7 @@ const Services = () => {
       icon: Warehouse,
       title: "Galpões Industriais",
       description: "Construção completa de galpões industriais com estrutura metálica de alta performance.",
-      image: galpao,
+      image: imageMercado,
       features: [
         "Projeto arquitetônico completo",
         "Estrutura robusta e durável",

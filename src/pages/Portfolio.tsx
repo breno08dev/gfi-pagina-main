@@ -4,17 +4,18 @@ import { Card } from "@/components/ui/card";
 //Galpão
 import galpaoImage from "@/assets/mercado2.jpg";
 import galpaoImage2 from "@/assets/atacadao.jpg";
+import galpaoImage3 from "@/assets/ImageGalpao2.jpg";
+import Mercado from "@/assets/ImageMercado.jpg";
 //Caldeiraria
 import caldeiraria from "@/assets/caldeiraria.jpg";
 import caldeiraria3 from "@/assets/caldeiraria3.jpg";
 //Estrutura Metalicas
 import estruturaImage from "@/assets/estrutura3.jpg";
 import estruturaImage2 from "@/assets/estrutura6.jpg";
+import estruturaImage3 from "@/assets/ImageGalpão.jpg"
 //Coberturas 
 import coberturaImage from "@/assets/cobertura.jpg";
 import coberturaImage2 from "@/assets/cobertura2.jpg";
-
-
 
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState("todos");
@@ -27,81 +28,107 @@ const Portfolio = () => {
     { id: "caldeiraria", label: "Caldeiraria" },
   ];
 
- const projects = [
-  {
-    id: 1,
-    title: "Galpão Industrial 2000m²",
-    category: "galpoes",
-    location: "São Paulo - SP",
-    year: "2023",
-    image: galpaoImage,
-    description: "Construção completa de galpão industrial com estrutura metálica para operação logística.",
-  },
-  {
-    id: 2,
-    title: "Unidade de Caldeiraria",
-    category: "caldeiraria",
-    location: "Campinas - SP",
-    year: "2023",
-    image: caldeiraria,
-    description: "Fabricação e montagem de equipamento industrial com acesso estrutural.",
-  },
-  {
-    id: 3,
-    title: "Estrutura Industrial Complexa",
-    category: "estruturas",
-    location: "Guarulhos - SP",
-    year: "2024",
-    image: estruturaImage2,
-    description: "Estrutura metálica robusta para expansão de linha de produção.",
-  },
-  {
-    id: 4,
-    title: "Galpão Logístico 3500m²",
-    category: "galpoes",
-    location: "Osasco - SP",
-    year: "2023",
-    image: galpaoImage2,
-    description: "Galpão metálico de grande porte para centro de distribuição.",
-  },
-  {
-    id: 5,
-    title: "Cobertura para Estacionamento",
-    category: "coberturas",
-    location: "São Bernardo - SP",
-    year: "2024",
-    image: coberturaImage,
-    description: "Cobertura metálica projetada para 50 vagas de estacionamento.",
-  },
-  {
-    id: 6,
-    title: "Complexo Industrial com Estruturas Metálicas",
-    category: "caldeiraria",
-    location: "Barueri - SP",
-    year: "2024",
-    image: caldeiraria3,
-    description: "Conjunto industrial com plataformas, tanques e acessos metálicos.",
-  },
-  {
-    id: 7,
-    title: "Estrutura para Torre de Resfriamento",
-    category: "estruturas",
-    location: "Jundiaí - SP",
-    year: "2023",
-    image: estruturaImage,
-    description: "Estrutura metálica leve com grande vão para suporte de equipamentos.",
-  },
-  {
-    id: 8,
-    title: "Cobertura Metálica Quadra Esportiva",
-    category: "coberturas",
-    location: "Sorocaba - SP",
-    year: "2024",
-    image: coberturaImage2,
-    description: "Cobertura de grande vão livre para quadra poliesportiva.",
-  },
-];
-
+  const projects = [
+    {
+      id: 1,
+      title: "Galpão Industrial 2000m²",
+      category: "galpoes",
+      location: "São Paulo - SP",
+      year: "2023",
+      image: galpaoImage,
+      description: "Construção completa de galpão industrial com estrutura metálica para operação logística.",
+    },
+    {
+      id: 2,
+      title: "Loja Comercial Atacado",
+      category: "galpoes",
+      location: "Rio de Janeiro", 
+      year: "2022",
+      image: Mercado,
+      description: "Loja Atacadão, estrutura personalidade completa",
+    },
+    {
+      id: 3,
+      title: "Estrutura Industrial Complexa",
+      category: "estruturas",
+      location: "Guarulhos - SP",
+      year: "2024",
+      image: estruturaImage2,
+      description: "Estrutura metálica robusta para expansão de linha de produção.",
+    },
+    {
+      id: 4,
+      title: "Galpão Logístico 3500m²",
+      category: "galpoes",
+      location: "Osasco - SP",
+      year: "2023",
+      image: galpaoImage2,
+      description: "Galpão metálico de grande porte para centro de distribuição.",
+    },
+    {
+      id: 5,
+      title: "Cobertura para Estacionamento",
+      category: "coberturas",
+      location: "São Bernardo - SP",
+      year: "2024",
+      image: coberturaImage,
+      description: "Cobertura metálica projetada para 50 vagas de estacionamento.",
+    },
+    {
+      id: 6,
+      title: "Complexo Industrial com Estruturas Metálicas",
+      category: "caldeiraria",
+      location: "Barueri - SP",
+      year: "2024",
+      image: caldeiraria3,
+      description: "Conjunto industrial com plataformas, tanques e acessos metálicos.",
+    },
+    {
+      id: 7,
+      title: "Estrutura Metálica Para Armazém",
+      category: "estruturas",
+      location: "Jundiaí - SP",
+      year: "2023",
+      image: estruturaImage,
+      description: "Estrutura metálica leve com grande vão para suporte de equipamentos.",
+    },
+    {
+      id: 8,
+      title: "Cobertura Metálica Quadra Esportiva",
+      category: "coberturas",
+      location: "Sorocaba - SP",
+      year: "2024",
+      image: coberturaImage2,
+      description: "Cobertura de grande vão livre para quadra poliesportiva.",
+    },
+    {
+      id: 9,
+      title: "Estrutura Personalizada",
+      category: "estruturas",
+      location: "Rio de Janeiro", 
+      year: "2021",
+      image: estruturaImage3,
+      description: "Galpão de armazenamento comercial",
+    },
+    {
+      id: 10,
+      title: "Estrutura Personalizada",
+      category: "galpoes",
+      location: "Mato Grosso do Sul", 
+      year: "2021",
+      image: galpaoImage3,
+      description: "Armazem de veneno",
+    },
+    {
+      id: 11,
+      title: "Unidade de Caldeiraria",
+      category: "caldeiraria",
+      location: "Campinas - SP",
+      year: "2023",
+      image: caldeiraria,
+      description: "Fabricação e montagem de equipamento industrial com acesso estrutural.",
+    },
+  ];
 
   const filteredProjects = activeFilter === "todos" 
     ? projects 
@@ -155,7 +182,8 @@ const Portfolio = () => {
                 key={project.id}
                 className={`group overflow-hidden border-none shadow-card hover:shadow-elegant transition-all duration-300 hover:-translate-y-2 animate-fade-up delay-${Math.min((index + 1) * 100, 400)}`}
               >
-                <div className="aspect-[4/3] overflow-hidden">
+                {/* AQUI: Alterado de aspect-[4/3] para aspect-video (16:9) */}
+                <div className="aspect-video overflow-hidden">
                   <img
                     src={project.image}
                     alt={project.title}

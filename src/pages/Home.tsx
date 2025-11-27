@@ -1,11 +1,21 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Building2, Hammer, Box, Warehouse, Wrench, Shield, Users, Award, ChevronRight } from "lucide-react";
+import SEO from "@/components/SEO";
+import { 
+  ArrowRight, 
+  Building2, 
+  Hammer, 
+  Box, 
+  Warehouse, 
+  Wrench, 
+  Shield, 
+  Users, 
+  Award, 
+  ClipboardCheck, // Novo ícone para Inspeções
+  HardHat         // Novo ícone para Manutenção
+} from "lucide-react";
 import ServiceCard from "@/components/ServiceCard";
 import heroImage from "@/assets/hero-industrial.jpg";
-import galpaoImage from "@/assets/atacadao.jpg";
-import mezaninoImage from "@/assets/estrutura6.jpg";
-import coberturaImage from "@/assets/estrutura3.jpg";
 
 const Home = () => {
   const services = [
@@ -34,6 +44,17 @@ const Home = () => {
       title: "Projetos Especiais",
       description: "Desenvolvimento de projetos customizados atendendo necessidades específicas do seu negócio.",
     },
+    // Novos Serviços Adicionados
+    {
+      icon: ClipboardCheck,
+      title: "Inspeções Técnicas",
+      description: "Avaliação detalhada da integridade estrutural, garantindo segurança e conformidade com normas.",
+    },
+    {
+      icon: HardHat,
+      title: "Manutenção em Telhados",
+      description: "Serviços de reparo, vedação e manutenção preventiva para prolongar a vida útil da sua cobertura.",
+    },
   ];
 
   const whyChooseUs = [
@@ -54,14 +75,25 @@ const Home = () => {
     },
   ];
 
-  const projects = [
-    { image: galpaoImage, title: "Galpão Industrial 2000m²" },
-    { image: mezaninoImage, title: "Estrutura Metálica" },
-    { image: coberturaImage, title: "Cobertura Metálica" },
+  // Logos das empresas para o carrossel
+  const clients = [
+    { name: "Atacadão", logo: "https://logo.clearbit.com/atacadao.com.br" },
+    { name: "Mercado Livre", logo: "https://logo.clearbit.com/mercadolivre.com.br" },
+    { name: "Assaí", logo: "https://logo.clearbit.com/assai.com.br" },
+    { name: "GPA", logo: "https://logo.clearbit.com/gpabr.com" },
+    { name: "Leroy Merlin", logo: "https://logo.clearbit.com/leroymerlin.com.br" },
+    { name: "Magazine Luiza", logo: "https://logo.clearbit.com/magazineluiza.com.br" },
   ];
 
   return (
     <div className="min-h-screen">
+      {/* SEO */}
+      <SEO 
+        title="Início" 
+        description="Especialistas em estruturas metálicas, galpões industriais e caldeiraria em Sertãozinho e região. Projetos com precisão e qualidade garantida." 
+        canonical="/"
+      />
+
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background Image with Overlay */}
@@ -108,11 +140,8 @@ const Home = () => {
             </div>
           </div>
         </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-          <ChevronRight className="w-6 h-6 text-primary-foreground rotate-90" />
-        </div>
+        
+        {/* Ícone de scroll removido conforme solicitado */}
       </section>
 
       {/* Services Section */}
@@ -183,59 +212,45 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Projects Preview Section */}
-      <section className="py-24 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="font-heading font-bold text-4xl md:text-5xl text-foreground mb-4">
-              Projetos Recentes
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Conheça alguns dos nossos trabalhos realizados com excelência
-            </p>
-          </div>
+      {/* Clients Section (Carrossel Infinito) */}
+      <section className="py-24 bg-background border-t border-border/50 overflow-hidden">
+        <div className="container mx-auto px-4 mb-12 text-center">
+          <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-4">
+            Clientes que confiam na GFI
+          </h2>
+          <p className="text-lg text-muted-foreground">
+            Grandes marcas que contam com a nossa qualidade e segurança
+          </p>
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
+        {/* Carrossel Infinito */}
+        <div className="relative w-full flex overflow-hidden mask-gradient-x">
+          {/* Gradiente nas bordas para suavizar a entrada/saída */}
+          <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-background to-transparent z-10" />
+          <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-background to-transparent z-10" />
+
+          <div className="flex animate-scroll whitespace-nowrap items-center">
+            {/* Lista triplicada para garantir o loop perfeito em telas grandes */}
+            {[...clients, ...clients, ...clients].map((client, index) => (
               <div 
-                key={project.title}
-                className={`group relative overflow-hidden rounded-lg shadow-card hover:shadow-elegant transition-all duration-300 hover:-translate-y-2 animate-fade-up delay-${(index + 1) * 100}`}
+                key={`${client.name}-${index}`} 
+                className="mx-12 flex items-center justify-center h-24 w-48 grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-500"
               >
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                  <div className="p-6 text-primary-foreground">
-                    <h3 className="font-heading font-bold text-xl mb-2">
-                      {project.title}
-                    </h3>
-                    <Button 
-                      asChild 
-                      variant="secondary" 
-                      size="sm"
-                      className="mt-2"
-                    >
-                      <Link to="/portfolio">
-                        Ver Detalhes
-                      </Link>
-                    </Button>
-                  </div>
-                </div>
+                <img 
+                  src={client.logo} 
+                  alt={`Logo ${client.name}`} 
+                  className="h-16 w-auto object-contain max-w-[180px]"
+                  onError={(e) => {
+                    // Fallback caso a logo não carregue
+                    e.currentTarget.style.display = 'none';
+                    const span = document.createElement('span');
+                    span.innerText = client.name;
+                    span.className = "text-xl font-bold text-muted-foreground";
+                    e.currentTarget.parentElement?.appendChild(span);
+                  }}
+                />
               </div>
             ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <Button asChild size="lg" className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-semibold">
-              <Link to="/portfolio">
-                Ver Todos os Projetos
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Link>
-            </Button>
           </div>
         </div>
       </section>

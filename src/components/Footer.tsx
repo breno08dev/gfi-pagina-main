@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin } from "lucide-react";
+import { Mail, Phone, MapPin, Instagram } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const Footer = () => {
@@ -17,17 +17,9 @@ const Footer = () => {
                 alt="GFI Soluções Metálicas" 
                 className="h-28 w-auto object-contain" 
               />
-              <div>
-                <div className="font-heading font-bold text-lg text-primary">
-                  
-                </div>
-                <div className="text-xs text-muted-foreground">
-                  
-                </div>
-              </div>
             </div>
             <p className="text-sm text-muted-foreground">
-              Empresa de montagem de estruturas metálicas, caldeiraria e construção civil
+              Empresa de montagem de estruturas metálicas, caldeiraria e construção civil.
             </p>
           </div>
 
@@ -41,6 +33,7 @@ const Footer = () => {
                 { path: "/servicos", label: "Serviços" },
                 { path: "/portfolio", label: "Portfólio" },
                 { path: "/contato", label: "Contato" },
+                { path: "/politica-de-privacidade", label: "Política de Privacidade" }, // Novo Link
               ].map((link) => (
                 <li key={link.path}>
                   <Link
@@ -87,7 +80,7 @@ const Footer = () => {
               <li className="flex items-start justify-center md:justify-start space-x-3 text-sm">
                 <Mail className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
                 <a
-                  href="gabriel@gfisolucoes.com.br"
+                  href="mailto:gabriel@gfisolucoes.com.br"
                   className="text-muted-foreground hover:text-secondary transition-colors"
                 >
                  gabriel@gfisolucoes.com.br
@@ -105,6 +98,8 @@ const Footer = () => {
             <div className="flex justify-center md:justify-start space-x-4 mt-6">
               <a
                 href="https://www.instagram.com/gfimetalicas/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 bg-background hover:bg-secondary rounded-lg flex items-center justify-center transition-colors group shadow-sm"
               >
                 <Instagram className="w-5 h-5 text-foreground group-hover:text-secondary-foreground" />
@@ -115,12 +110,22 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-border/50 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <p className="text-sm text-muted-foreground">
-            © {currentYear} GFI Montagem Todos os direitos reservados.
-          </p>
-          <p className="text-sm text-muted-foreground">
-            CNPJ: 59.995.162/0001-50
-          </p>
+          <div className="text-sm text-muted-foreground text-center md:text-left">
+            <p>© {currentYear} GFI Montagem. Todos os direitos reservados.</p>
+            <p className="text-xs mt-1 opacity-80">CNPJ: 59.995.162/0001-50</p>
+          </div>
+          
+          <div className="text-sm text-muted-foreground flex items-center gap-1">
+            <span>Desenvolvido por</span>
+            <a 
+              href="http://conectnew.com.br/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="font-bold text-secondary hover:underline transition-colors"
+            >
+              CONECT NEW
+            </a>
+          </div>
         </div>
       </div>
     </footer>
