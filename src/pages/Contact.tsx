@@ -2,9 +2,19 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Card, CardContent } from "@/components/ui/card";
-import { Mail, Phone, MapPin, Clock, Send, Building2 } from "lucide-react";
-import SEO from "@/components/SEO"; // <--- IMPORTANTE: Importação do SEO
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { 
+  Mail, 
+  Phone, 
+  MapPin, 
+  Clock, 
+  Building2, 
+  User, 
+  FileText, 
+  MessageSquare, 
+  Send 
+} from "lucide-react";
+import SEO from "@/components/SEO";
 
 // Componente do Ícone do WhatsApp
 const WhatsAppIcon = ({ className }: { className?: string }) => (
@@ -19,25 +29,20 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 );
 
 const Contact = () => {
-  // Estado para os campos do formulário
   const [formData, setFormData] = useState({
     name: "",
     subject: "",
     message: "",
   });
 
-  // Atualiza o estado conforme o usuário digita
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Envia para o WhatsApp
   const handleWhatsAppSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-    const text = `Olá, me chamo ${formData.name}, gostaria de falar sobre o assunto ${formData.subject}, ${formData.message}`;
+    const text = `Olá, me chamo ${formData.name}, gostaria de falar sobre o assunto: ${formData.subject}. Mensagem: ${formData.message}`;
     const phoneNumber = "5516996166838";
-    
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`, '_blank');
   };
 
@@ -68,7 +73,6 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen pt-20 bg-gray-50/50">
-      {/* --- SEO CONFIG --- */}
       <SEO 
         title="Contato" 
         description="Fale com a GFI Soluções Metálicas. Solicite seu orçamento para galpões, caldeiraria e estruturas metálicas via WhatsApp ou E-mail." 
@@ -93,8 +97,113 @@ const Contact = () => {
       <div className="container mx-auto px-4 py-16 -mt-16 relative z-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
           
-          {/* --- COLUNA DA ESQUERDA: INFORMAÇÕES + MAPA --- */}
-          <div className="lg:col-span-5 space-y-8 animate-fade-in delay-200 pt-8 lg:pt-0">
+          {/* --- COLUNA DA DIREITA: FORMULÁRIO PRO --- 
+            ORDEM: order-1 (Mobile: Aparece primeiro) | lg:order-2 (Desktop: Aparece na direita/segundo)
+          */}
+          <div className="lg:col-span-7 order-1 lg:order-2 animate-fade-in delay-300">
+            <Card className="border-none shadow-2xl h-full bg-white relative overflow-hidden rounded-2xl group hover:shadow-3xl transition-shadow duration-300">
+              {/* Barra de destaque colorida no topo */}
+              <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-primary via-secondary to-primary" />
+              
+              <CardHeader className="pt-10 px-8 md:px-12 pb-2">
+                <CardTitle className="font-heading font-bold text-3xl text-foreground flex items-center gap-3">
+                  <Send className="w-6 h-6 text-secondary" />
+                  Envie uma mensagem
+                </CardTitle>
+                <CardDescription className="text-lg text-muted-foreground mt-2">
+                  Preencha o formulário abaixo para iniciar uma conversa direta via WhatsApp.
+                </CardDescription>
+              </CardHeader>
+
+              <CardContent className="p-8 md:p-12 pt-6">
+                <form onSubmit={handleWhatsAppSubmit} className="space-y-6">
+                  
+                  {/* Nome com Ícone */}
+                  <div className="space-y-2">
+                    <label htmlFor="name" className="text-sm font-bold text-foreground/80 ml-1">
+                      Seu Nome
+                    </label>
+                    <div className="relative">
+                      <div className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground/60">
+                        <User className="w-5 h-5" />
+                      </div>
+                      <Input
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                        placeholder="Digite seu nome completo"
+                        className="h-14 pl-10 pr-4 bg-gray-50 border-gray-200 focus:bg-white focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all duration-300 text-base shadow-sm rounded-xl"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Assunto com Ícone */}
+                  <div className="space-y-2">
+                    <label htmlFor="subject" className="text-sm font-bold text-foreground/80 ml-1">
+                      Assunto
+                    </label>
+                    <div className="relative">
+                      <div className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground/60">
+                        <FileText className="w-5 h-5" />
+                      </div>
+                      <Input
+                        id="subject"
+                        name="subject"
+                        value={formData.subject}
+                        onChange={handleChange}
+                        required
+                        placeholder="Ex: Orçamento Galpão"
+                        className="h-14 pl-10 pr-4 bg-gray-50 border-gray-200 focus:bg-white focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all duration-300 text-base shadow-sm rounded-xl"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Mensagem com Ícone */}
+                  <div className="space-y-2">
+                    <label htmlFor="message" className="text-sm font-bold text-foreground/80 ml-1">
+                      Mensagem
+                    </label>
+                    <div className="relative">
+                      <div className="absolute left-3 top-4 text-muted-foreground/60">
+                        <MessageSquare className="w-5 h-5" />
+                      </div>
+                      <Textarea
+                        id="message"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        required
+                        placeholder="Olá, gostaria de saber mais sobre..."
+                        className="min-h-[180px] pl-10 pr-4 pt-4 bg-gray-50 border-gray-200 focus:bg-white focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all duration-300 text-base resize-none shadow-sm rounded-xl"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="pt-4">
+                    <Button 
+                      type="submit" 
+                      size="lg"
+                      className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white font-heading font-bold text-lg h-16 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3"
+                    >
+                      <WhatsAppIcon className="w-6 h-6 fill-current" />
+                      Iniciar Conversa no WhatsApp
+                    </Button>
+                    <p className="text-center text-xs text-muted-foreground mt-4 flex items-center justify-center gap-2">
+                      <Clock className="w-3 h-3" />
+                      Tempo médio de resposta: 10 minutos em horário comercial
+                    </p>
+                  </div>
+                </form>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* --- COLUNA DA ESQUERDA: INFORMAÇÕES + MAPA --- 
+            ORDEM: order-2 (Mobile: Aparece depois) | lg:order-1 (Desktop: Aparece na esquerda/primeiro)
+          */}
+          <div className="lg:col-span-5 space-y-8 animate-fade-in delay-200 pt-8 lg:pt-0 order-2 lg:order-1">
             {/* Card de Informações */}
             <div className="bg-white border border-border/40 rounded-2xl shadow-lg p-8">
               <h3 className="font-heading font-bold text-2xl mb-8 flex items-center gap-3 text-foreground">
@@ -140,88 +249,6 @@ const Contact = () => {
                 className="grayscale group-hover:grayscale-0 transition-all duration-500 opacity-90 group-hover:opacity-100"
               ></iframe>
             </div>
-          </div>
-
-          {/* --- COLUNA DA DIREITA: FORMULÁRIO PRO (CARD DESTACADO) --- */}
-          <div className="lg:col-span-7 animate-fade-in delay-300">
-            <Card className="border-none shadow-2xl h-full bg-white relative overflow-hidden rounded-2xl">
-              <div className="absolute top-0 left-0 right-0 h-1.5 bg-secondary" />
-              
-              <CardContent className="p-8 md:p-12">
-                <div className="mb-10">
-                  <h2 className="font-heading font-bold text-3xl text-foreground mb-3">
-                    Envie uma mensagem direta
-                  </h2>
-                  <p className="text-muted-foreground text-lg">
-                    Preencha os campos abaixo. Ao clicar em enviar, você será redirecionado para o WhatsApp com sua mensagem pronta.
-                  </p>
-                </div>
-
-                <form onSubmit={handleWhatsAppSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label htmlFor="name" className="text-sm font-bold text-foreground/80 ml-1">
-                        Seu Nome
-                      </label>
-                      <Input
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        placeholder="Digite seu nome completo"
-                        className="h-14 px-4 bg-white border-gray-200 focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all duration-300 text-base shadow-sm"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <label htmlFor="subject" className="text-sm font-bold text-foreground/80 ml-1">
-                        Assunto
-                      </label>
-                      <Input
-                        id="subject"
-                        name="subject"
-                        value={formData.subject}
-                        onChange={handleChange}
-                        required
-                        placeholder="Ex: Orçamento Galpão"
-                        className="h-14 px-4 bg-white border-gray-200 focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all duration-300 text-base shadow-sm"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <label htmlFor="message" className="text-sm font-bold text-foreground/80 ml-1">
-                      Mensagem
-                    </label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      placeholder="Olá, gostaria de saber mais sobre..."
-                      className="min-h-[200px] p-4 bg-white border-gray-200 focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all duration-300 text-base resize-none shadow-sm"
-                    />
-                  </div>
-
-                  <div className="pt-4">
-                    <Button 
-                      type="submit" 
-                      size="lg"
-                      className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white font-heading font-bold text-lg h-16 rounded-xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3"
-                    >
-                      <WhatsAppIcon className="w-6 h-6 fill-current" />
-                      Iniciar Conversa no WhatsApp
-                    </Button>
-                    <p className="text-center text-xs text-muted-foreground mt-4 flex items-center justify-center gap-2">
-                      <Clock className="w-3 h-3" />
-                      Tempo médio de resposta: 10 minutos em horário comercial
-                    </p>
-                  </div>
-                </form>
-              </CardContent>
-            </Card>
           </div>
 
         </div>

@@ -13,15 +13,14 @@ import {
   Flame 
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import estruturaImage from "@/assets/ImageEstrutura2.jpg";
-import imageMercado from "@/assets/ImageMercado.jpg"
-import mezaninoImage from "@/assets/mezanino.jpg";
-import coberturaImage from "@/assets/cobertura-metalica.jpg";
-import equipeImage from "@/assets/equipe-industrial.jpg";
-import caldeiraria  from "@/assets/manutençãoCaldeiraria.jpg"
-import montagemCaldeiraria from "@/assets/montandoCaldeiraria.jpg"
-import manutencaoTelhados from "@/assets/ManutençãoTelhados.jpg"
-import inspecaoImage from "@/assets/InspeçãoMetalica.jpg"
+import estruturaImage from "@/assets/ImageEstrutura2.webp";
+import imageMercado from "@/assets/ImageMercado.webp"
+import mezaninoImage from "@/assets/mezanino.webp";
+import coberturaImage from "@/assets/cobertura-metalica.webp";
+import caldeiraria  from "@/assets/manutencaoCaldeiraria.webp"
+import montagemCaldeiraria from "@/assets/montandoCaldeiraria.webp"
+import manutencaoTelhados from "@/assets/ManutencaoTelhados.webp"
+import inspecaoImage from "@/assets/InspecaoMetalica.webp"
 
 const Services = () => {
   const services = [

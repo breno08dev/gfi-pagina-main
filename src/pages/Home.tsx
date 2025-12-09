@@ -15,7 +15,18 @@ import {
   HardHat         // Novo ícone para Manutenção
 } from "lucide-react";
 import ServiceCard from "@/components/ServiceCard";
-import heroImage from "@/assets/hero-industrial.jpg";
+import heroImage from "@/assets/hero-industrial.webp";
+// Logo das empresas que confiam na GFI
+import logoAtacadaão from "@/assets/logo.atacadao.png"
+import logoAssai from "@/assets/logo.assai.png"
+import logoCocaCola from "@/assets/logo.coca.png"
+import logoDia from "@/assets/logo.dia.png"
+import logoMax from "@/assets/logo.max.png"
+import logoSuperAtacado from "@/assets/logo.superAtacado.png"
+import logoSerRio from "@/assets/logo.serRio.png"
+import logoEneva from "@/assets/logo.eneva.png"
+import logoMabex from "@/assets/logo.mabex.png"
+
 
 const Home = () => {
   const services = [
@@ -77,26 +88,28 @@ const Home = () => {
 
   // Logos das empresas para o carrossel
   const clients = [
-    { name: "Atacadão", logo: "https://logo.clearbit.com/atacadao.com.br" },
-    { name: "Mercado Livre", logo: "https://logo.clearbit.com/mercadolivre.com.br" },
-    { name: "Assaí", logo: "https://logo.clearbit.com/assai.com.br" },
-    { name: "GPA", logo: "https://logo.clearbit.com/gpabr.com" },
-    { name: "Leroy Merlin", logo: "https://logo.clearbit.com/leroymerlin.com.br" },
-    { name: "Magazine Luiza", logo: "https://logo.clearbit.com/magazineluiza.com.br" },
+    { name: "Atacadão", logo: logoAtacadaão },
+    { name: "Atacadão Dia a Dia", logo: logoDia },
+    { name: "Assaí", logo: logoAssai },
+    { name: "CocaCola", logo: logoCocaCola },
+    { name: "Atacadão Obra Max", logo: logoMax },
+    { name: "SuperAtacado Leve Max", logo: logoSuperAtacado },
+    { name: "Ser Rio Construtora", logo: logoSerRio },
+    { name: "Eneva", logo: logoEneva },
+    { name: "Mabex", logo: logoMabex },
+
   ];
 
   return (
     <div className="min-h-screen">
-      {/* SEO */}
       <SEO 
         title="Início" 
         description="Especialistas em estruturas metálicas, galpões industriais e caldeiraria em Sertãozinho e região. Projetos com precisão e qualidade garantida." 
         canonical="/"
       />
 
-      {/* Hero Section */}
+      {/* Hero Section - Mantida igual */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image with Overlay */}
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${heroImage})` }}
@@ -105,7 +118,6 @@ const Home = () => {
           <div className="absolute inset-0 metallic-texture" />
         </div>
 
-        {/* Content */}
         <div className="relative container mx-auto px-4 py-32 z-10">
           <div className="max-w-3xl">
             <h1 className="font-heading font-bold text-5xl md:text-7xl text-primary-foreground mb-6 animate-fade-up">
@@ -140,11 +152,9 @@ const Home = () => {
             </div>
           </div>
         </div>
-        
-        {/* Ícone de scroll removido conforme solicitado */}
       </section>
 
-      {/* Services Section */}
+      {/* Services Section - Mantida igual */}
       <section className="py-24 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
@@ -179,7 +189,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
+      {/* Why Choose Us Section - Mantida igual */}
       <section className="py-24 bg-muted">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
@@ -212,7 +222,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Clients Section (Carrossel Infinito) */}
+      {/* Clients Section (Carrossel Infinito - MODIFICADO) */}
       <section className="py-24 bg-background border-t border-border/50 overflow-hidden">
         <div className="container mx-auto px-4 mb-12 text-center">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-4">
@@ -225,27 +235,27 @@ const Home = () => {
 
         {/* Carrossel Infinito */}
         <div className="relative w-full flex overflow-hidden mask-gradient-x">
-          {/* Gradiente nas bordas para suavizar a entrada/saída */}
           <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-background to-transparent z-10" />
           <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-background to-transparent z-10" />
 
-          <div className="flex animate-scroll whitespace-nowrap items-center">
-            {/* Lista triplicada para garantir o loop perfeito em telas grandes */}
+          {/* Adicionado hover:[animation-play-state:running] para garantir que não pare */}
+          <div className="flex animate-scroll whitespace-nowrap items-center hover:[animation-play-state:running]">
             {[...clients, ...clients, ...clients].map((client, index) => (
               <div 
                 key={`${client.name}-${index}`} 
-                className="mx-12 flex items-center justify-center h-24 w-48 grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-500"
+                // ALTERADO: Estilo "esquadrado", fundo branco, sombra suave e sem grayscale
+                className="mx-6 flex items-center justify-center h-40 w-40 bg-white rounded-2xl shadow-sm border border-border/40 p-6 transition-transform duration-300 hover:scale-105 hover:shadow-md"
               >
                 <img 
                   src={client.logo} 
                   alt={`Logo ${client.name}`} 
-                  className="h-16 w-auto object-contain max-w-[180px]"
+                  // Ajustado para conter a imagem dentro do quadrado
+                  className="w-full h-full object-contain"
                   onError={(e) => {
-                    // Fallback caso a logo não carregue
                     e.currentTarget.style.display = 'none';
                     const span = document.createElement('span');
                     span.innerText = client.name;
-                    span.className = "text-xl font-bold text-muted-foreground";
+                    span.className = "text-sm font-bold text-muted-foreground text-center whitespace-normal";
                     e.currentTarget.parentElement?.appendChild(span);
                   }}
                 />
@@ -255,7 +265,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* CTA Section - Mantida igual */}
       <section className="py-24 bg-primary text-primary-foreground relative overflow-hidden">
         <div className="absolute inset-0 metallic-texture" />
         <div className="container mx-auto px-4 relative z-10">

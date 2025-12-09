@@ -22,7 +22,7 @@ const PrivacyPolicy = () => {
             Transparência e compromisso com a proteção dos seus dados. Saiba como a GFI coleta, utiliza e protege suas informações.
           </p>
           <p className="text-sm mt-6 text-primary-foreground/60">
-            Última atualização: {lastUpdate}
+            Última atualização: 15 de Dezembro de 2025
           </p>
         </div>
       </section>

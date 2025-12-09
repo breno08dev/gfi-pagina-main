@@ -1,5 +1,5 @@
 import { Shield, Target, Eye, Award, Users, TrendingUp } from "lucide-react";
-import equipeImage from "@/assets/equipe-industrial.jpg";
+import equipeImage from "@/assets/equipe-industrial.webp";
 
 const About = () => {
   const values = [
