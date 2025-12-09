@@ -1,24 +1,59 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import SEO from "@/components/SEO"; // Importação do SEO adicionada para consistência
+import SEO from "@/components/SEO";
 
 //Galpão
 import galpaoImage from "@/assets/mercado2.webp";
 import galpaoImage2 from "@/assets/atacadao.webp";
 import galpaoImage3 from "@/assets/ImageGalpao2.webp";
 import Mercado from "@/assets/ImageMercado.webp";
-
 //Caldeiraria
 import caldeiraria from "@/assets/caldeiraria.webp";
 import caldeiraria3 from "@/assets/caldeiraria3.webp";
 //Estrutura Metalicas
 import estruturaImage from "@/assets/estrutura3.webp";
 import estruturaImage2 from "@/assets/estrutura6.webp";
-import estruturaImage3 from "@/assets/ImageGalpao.webp"
+import estruturaImage3 from "@/assets/ImageGalpao.webp";
 //Coberturas 
 import coberturaImage from "@/assets/cobertura.webp";
 import coberturaImage2 from "@/assets/cobertura2.webp";
+
+// --- Componente Auxiliar para Animação de Scroll ---
+const FadeInItem = ({ children, index }: { children: React.ReactNode; index: number }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1, rootMargin: "50px" }
+    );
+
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      // Delay escalonado levemente baseado no index (se tivermos grid de 3, reseta a cada 3 para não ficar muito longo)
+      style={{ transitionDelay: `${(index % 3) * 150}ms` }}
+      className={`
+        transform transition-all duration-1000 ease-out h-full
+        ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}
+      `}
+    >
+      {children}
+    </div>
+  );
+};
+// ---------------------------------------------------
 
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState("todos");
@@ -38,7 +73,7 @@ const Portfolio = () => {
       category: "galpoes",
       location: "São Paulo - SP",
       year: "2023",
-      image: galpaoImage, // mercado2.jpg
+      image: galpaoImage,
       description: "Estrutura de grande porte com fechamento lateral e cobertura termoacústica para rede de varejo.",
     },
     {
@@ -47,7 +82,7 @@ const Portfolio = () => {
       category: "galpoes",
       location: "Rio de Janeiro", 
       year: "2022",
-      image: Mercado, // ImageMercado.jpg
+      image: Mercado,
       description: "Obra completa para rede de varejo, abrangendo loja principal, marquises e áreas externas.",
     },
     {
@@ -56,7 +91,7 @@ const Portfolio = () => {
       category: "estruturas",
       location: "Guarulhos - SP",
       year: "2024",
-      image: estruturaImage2, // estrutura6.jpg
+      image: estruturaImage2,
       description: "Montagem de pórticos e tesouras metálicas para galpão industrial de pé-direito elevado.",
     },
     {
@@ -65,7 +100,7 @@ const Portfolio = () => {
       category: "galpoes",
       location: "Osasco - SP",
       year: "2023",
-      image: galpaoImage2, // atacadao.jpg
+      image: galpaoImage2,
       description: "Execução de estrutura metálica pesada para nova unidade, com foco em agilidade e grandes vãos livres.",
     },
     {
@@ -74,7 +109,7 @@ const Portfolio = () => {
       category: "coberturas",
       location: "São Bernardo - SP",
       year: "2024",
-      image: coberturaImage, // cobertura.jpg
+      image: coberturaImage,
       description: "Instalação de sistema de cobertura metálica de alta eficiência para grandes áreas logísticas.",
     },
     {
@@ -83,7 +118,7 @@ const Portfolio = () => {
       category: "caldeiraria",
       location: "Barueri - SP",
       year: "2024",
-      image: caldeiraria3, // caldeiraria3.jpg
+      image: caldeiraria3,
       description: "Complexo industrial com estruturas de acesso, pipe racks e suporte para equipamentos pesados.",
     },
     {
@@ -92,7 +127,7 @@ const Portfolio = () => {
       category: "estruturas",
       location: "Jundiaí - SP",
       year: "2023",
-      image: estruturaImage, // estrutura3.jpg
+      image: estruturaImage,
       description: "Sistema de treliças metálicas projetado para vencimento de grandes vãos com leveza estrutural.",
     },
     {
@@ -101,7 +136,7 @@ const Portfolio = () => {
       category: "coberturas",
       location: "Sorocaba - SP",
       year: "2024",
-      image: coberturaImage2, // cobertura2.jpg
+      image: coberturaImage2,
       description: "Estrutura de cobertura preparada para instalações industriais, com suporte integrado para redes de incêndio.",
     },
     {
@@ -110,7 +145,7 @@ const Portfolio = () => {
       category: "estruturas",
       location: "Rio de Janeiro", 
       year: "2021",
-      image: estruturaImage3, // ImageGalpão.jpg
+      image: estruturaImage3,
       description: "Estrutura metálica personalizada para expansão de área produtiva e armazenamento.",
     },
     {
@@ -119,7 +154,7 @@ const Portfolio = () => {
       category: "galpoes",
       location: "Mato Grosso do Sul", 
       year: "2021",
-      image: galpaoImage3, // ImageGalpao2.jpg
+      image: galpaoImage3,
       description: "Execução completa de CD Logístico, desde a fundação até o fechamento metálico.",
     },
     {
@@ -128,7 +163,7 @@ const Portfolio = () => {
       category: "caldeiraria",
       location: "Campinas - SP",
       year: "2023",
-      image: caldeiraria, // caldeiraria.jpg
+      image: caldeiraria,
       description: "Fabricação e montagem de campo de tanques industriais com rigoroso controle de solda.",
     },
   ];
@@ -187,36 +222,36 @@ const Portfolio = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProjects.map((project, index) => (
-              <Card 
-                key={project.id}
-                className={`group overflow-hidden border-none shadow-card hover:shadow-elegant transition-all duration-300 hover:-translate-y-2 animate-fade-up delay-${Math.min((index + 1) * 100, 400)}`}
-              >
-                <div className="aspect-video overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-                <div className="p-6 space-y-3">
-                  <div className="flex items-center justify-between text-sm text-muted-foreground">
-                    <span className="flex items-center gap-1">
-                      {/* Pequeno ponto para decorar */}
-                      <span className="w-1.5 h-1.5 rounded-full bg-secondary inline-block" />
-                      {project.location}
-                    </span>
-                    <span className="font-mono text-xs border border-border px-2 py-0.5 rounded">
-                      {project.year}
-                    </span>
+              // Envolvemos o Card no nosso componente de FadeInItem
+              <FadeInItem key={project.id} index={index}>
+                <Card className="group h-full overflow-hidden border-none shadow-card hover:shadow-elegant transition-all duration-300">
+                  <div className="aspect-video overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      loading="lazy"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
                   </div>
-                  <h3 className="font-heading font-bold text-xl text-foreground group-hover:text-secondary transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-muted-foreground line-clamp-3 text-sm leading-relaxed">
-                    {project.description}
-                  </p>
-                </div>
-              </Card>
+                  <div className="p-6 space-y-3">
+                    <div className="flex items-center justify-between text-sm text-muted-foreground">
+                      <span className="flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-secondary inline-block" />
+                        {project.location}
+                      </span>
+                      <span className="font-mono text-xs border border-border px-2 py-0.5 rounded">
+                        {project.year}
+                      </span>
+                    </div>
+                    <h3 className="font-heading font-bold text-xl text-foreground group-hover:text-secondary transition-colors">
+                      {project.title}
+                    </h3>
+                    <p className="text-muted-foreground line-clamp-3 text-sm leading-relaxed">
+                      {project.description}
+                    </p>
+                  </div>
+                </Card>
+              </FadeInItem>
             ))}
           </div>
         </div>

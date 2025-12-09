@@ -13,14 +13,55 @@ import {
   Flame 
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { useState, useEffect, useRef } from "react";
+import SEO from "@/components/SEO";
+
+// Imagens atualizadas para .webp (performance e correção de nomes)
 import estruturaImage from "@/assets/ImageEstrutura2.webp";
-import imageMercado from "@/assets/ImageMercado.webp"
+import imageMercado from "@/assets/ImageMercado.webp";
 import mezaninoImage from "@/assets/mezanino.webp";
 import coberturaImage from "@/assets/cobertura-metalica.webp";
-import caldeiraria  from "@/assets/manutencaoCaldeiraria.webp"
-import montagemCaldeiraria from "@/assets/montandoCaldeiraria.webp"
-import manutencaoTelhados from "@/assets/ManutencaoTelhados.webp"
-import inspecaoImage from "@/assets/InspecaoMetalica.webp"
+import caldeiraria from "@/assets/manutencaoCaldeiraria.webp";
+import montagemCaldeiraria from "@/assets/montandoCaldeiraria.webp";
+import manutencaoTelhados from "@/assets/ManutencaoTelhados.webp";
+import inspecaoImage from "@/assets/InspecaoMetalica.webp";
+
+// --- Componente Auxiliar para Animação de Scroll (FadeInItem) ---
+const FadeInItem = ({ children, index, className = "" }: { children: React.ReactNode; index: number; className?: string }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1, rootMargin: "50px" } // Começa a carregar um pouco antes de entrar totalmente
+    );
+
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      // Delay escalonado levemente apenas para grids lado a lado, ou fixo para listas verticais
+      style={{ transitionDelay: `${(index % 3) * 150}ms` }}
+      className={`
+        transform transition-all duration-1000 ease-out
+        ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}
+        ${className}
+      `}
+    >
+      {children}
+    </div>
+  );
+};
+// ---------------------------------------------------
 
 const Services = () => {
   const services = [
@@ -132,6 +173,12 @@ const Services = () => {
 
   return (
     <div className="min-h-screen pt-20">
+      <SEO 
+        title="Serviços" 
+        description="Conheça nossos serviços: Estruturas Metálicas, Coberturas, Mezaninos, Galpões, Montagem e Caldeiraria." 
+        canonical="/servicos"
+      />
+
       {/* Hero Section */}
       <section className="py-24 bg-gradient-to-br from-primary via-primary to-primary/90 text-primary-foreground relative overflow-hidden">
         <div className="absolute inset-0 metallic-texture" />
@@ -152,41 +199,44 @@ const Services = () => {
         <div className="container mx-auto px-4">
           <div className="space-y-24">
             {services.map((service, index) => (
-              <div 
-                key={service.title}
-                className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
-                  index % 2 === 1 ? 'lg:flex-row-reverse' : ''
-                }`}
-              >
-                <div className={`${index % 2 === 1 ? 'lg:order-2' : ''}`}>
-                  <div className="aspect-[4/3] rounded-lg overflow-hidden shadow-elegant">
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                    />
+              // Usamos index={0} aqui para que o delay seja mínimo, já que os itens aparecem um abaixo do outro
+              <FadeInItem key={service.title} index={0} className="block">
+                <div 
+                  className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
+                    index % 2 === 1 ? 'lg:flex-row-reverse' : ''
+                  }`}
+                >
+                  <div className={`${index % 2 === 1 ? 'lg:order-2' : ''}`}>
+                    <div className="aspect-[4/3] rounded-lg overflow-hidden shadow-elegant">
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        loading="lazy"
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                      />
+                    </div>
+                  </div>
+                  <div className={`space-y-6 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
+                    <div className="w-16 h-16 bg-secondary/10 rounded-lg flex items-center justify-center">
+                      <service.icon className="w-8 h-8 text-secondary" />
+                    </div>
+                    <h2 className="font-heading font-bold text-4xl text-foreground">
+                      {service.title}
+                    </h2>
+                    <p className="text-lg text-muted-foreground leading-relaxed">
+                      {service.description}
+                    </p>
+                    <div className="space-y-3">
+                      {service.features.map((feature) => (
+                        <div key={feature} className="flex items-start space-x-3">
+                          <Check className="w-6 h-6 text-secondary flex-shrink-0 mt-0.5" />
+                          <span className="text-foreground">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
-                <div className={`space-y-6 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-                  <div className="w-16 h-16 bg-secondary/10 rounded-lg flex items-center justify-center">
-                    <service.icon className="w-8 h-8 text-secondary" />
-                  </div>
-                  <h2 className="font-heading font-bold text-4xl text-foreground">
-                    {service.title}
-                  </h2>
-                  <p className="text-lg text-muted-foreground leading-relaxed">
-                    {service.description}
-                  </p>
-                  <div className="space-y-3">
-                    {service.features.map((feature) => (
-                      <div key={feature} className="flex items-start space-x-3">
-                        <Check className="w-6 h-6 text-secondary flex-shrink-0 mt-0.5" />
-                        <span className="text-foreground">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+              </FadeInItem>
             ))}
           </div>
         </div>
@@ -211,22 +261,21 @@ const Services = () => {
               { number: "03", title: "Fabricação/Execução", description: "Produção e execução com controle de qualidade rigoroso" },
               { number: "04", title: "Entrega Técnica", description: "Finalização, inspeção e entrega com garantia" },
             ].map((step, index) => (
-              <Card 
-                key={step.number}
-                className={`border-t-4 border-t-secondary animate-fade-up delay-${(index + 1) * 100}`}
-              >
-                <CardContent className="p-6 space-y-4">
-                  <div className="font-heading font-bold text-5xl text-secondary/20">
-                    {step.number}
-                  </div>
-                  <h3 className="font-heading font-bold text-xl text-foreground">
-                    {step.title}
-                  </h3>
-                  <p className="text-muted-foreground">
-                    {step.description}
-                  </p>
-                </CardContent>
-              </Card>
+              <FadeInItem key={step.number} index={index}>
+                <Card className="h-full border-t-4 border-t-secondary hover:shadow-lg transition-shadow duration-300">
+                  <CardContent className="p-6 space-y-4">
+                    <div className="font-heading font-bold text-5xl text-secondary/20">
+                      {step.number}
+                    </div>
+                    <h3 className="font-heading font-bold text-xl text-foreground">
+                      {step.title}
+                    </h3>
+                    <p className="text-muted-foreground">
+                      {step.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </FadeInItem>
             ))}
           </div>
         </div>

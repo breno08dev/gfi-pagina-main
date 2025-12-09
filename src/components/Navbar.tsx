@@ -36,7 +36,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4">
         {/* Aumentei a altura do container para h-28 (112px) para acomodar a logo maior */}
-        <div className="flex items-center justify-between h-28">
+        <div className="flex items-center justify-between h-24">
           {/* Logo isolada e maior */}
           <Link to="/" className="flex items-center group">
             <img 
