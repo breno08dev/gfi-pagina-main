@@ -42,7 +42,7 @@ const Contact = () => {
   const handleWhatsAppSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const text = `Olá, me chamo ${formData.name}, gostaria de falar sobre o assunto: ${formData.subject}. Mensagem: ${formData.message}`;
-    const phoneNumber = "5516996166838";
+    const phoneNumber = "5516994347611";
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`, '_blank');
   };
 
@@ -56,7 +56,7 @@ const Contact = () => {
     {
       icon: Phone,
       title: "Telefone & WhatsApp",
-      value: "(16) 99616-6838",
+      value: "(16) 99434-7611",
     },
     {
       icon: Mail,
@@ -188,7 +188,7 @@ const Contact = () => {
                       className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white font-heading font-bold text-lg h-16 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3"
                     >
                       <WhatsAppIcon className="w-6 h-6 fill-current" />
-                      Iniciar Conversa no WhatsApp
+                      Enviar
                     </Button>
                     <p className="text-center text-xs text-muted-foreground mt-4 flex items-center justify-center gap-2">
                       <Clock className="w-3 h-3" />
@@ -223,7 +223,7 @@ const Contact = () => {
                       <p className="text-sm font-semibold text-muted-foreground mb-1 uppercase tracking-wider">
                         {info.title}
                       </p>
-                      <p className="font-heading font-medium text-lg text-foreground cursor-default select-text">
+                      <p className="font-heading font-medium text- text-foreground cursor-default select-text">
                         {info.value}
                       </p>
                       {info.subValue && (

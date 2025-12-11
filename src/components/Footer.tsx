@@ -74,7 +74,7 @@ const Footer = () => {
               <li className="flex items-start justify-center md:justify-start space-x-3 text-sm">
                 <Phone className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
                 <div>
-                  <div className="text-muted-foreground">(16) 99616-6838</div>
+                  <div className="text-muted-foreground">(16) 99434-7611</div>
                 </div>
               </li>
               <li className="flex items-start justify-center md:justify-start space-x-3 text-sm">
